@@ -1,0 +1,24 @@
+<svg width="400" height="400" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circular background -->
+  <circle cx="200" cy="200" r="200" fill="#E8F5E9"/>
+  
+  <!-- Cow head -->
+  <path d="M200 120C160 120 130 150 130 190C130 230 160 260 200 260C240 260 270 230 270 190C270 150 240 120 200 120Z" fill="#0D47A1"/>
+  
+  <!-- Horns -->
+  <path d="M130 160C110 140 90 150 80 170C70 190 80 210 100 220" stroke="#0D47A1" stroke-width="20" stroke-linecap="round"/>
+  <path d="M270 160C290 140 310 150 320 170C330 190 320 210 300 220" stroke="#0D47A1" stroke-width="20" stroke-linecap="round"/>
+  
+  <!-- Leaf -->
+  <path d="M180 280C150 260 130 280 120 300C110 320 130 340 150 340C170 340 180 320 180 300Z" fill="#4CAF50"/>
+  
+  <!-- Digital elements -->
+  <circle cx="240" cy="180" r="10" fill="#4CAF50"/>
+  <rect x="230" y="190" width="20" height="40" rx="5" fill="#4CAF50"/>
+  
+  <!-- Water drop -->
+  <path d="M200 340C190 320 180 320 180 330C180 340 190 350 200 350C210 350 220 340 220 330C220 320 210 320 200 340Z" fill="#4CAF50"/>
+  
+  <!-- Fields/farmland representation -->
+  <path d="M100 280C150 290 250 290 300 280" stroke="#4CAF50" stroke-width="20" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,41 @@
+<svg width="800" height="600" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sky background -->
+  <rect width="800" height="600" fill="#87CEEB"/>
+  
+  <!-- Sun -->
+  <circle cx="700" cy="100" r="60" fill="#FFD700"/>
+  
+  <!-- Hills -->
+  <path d="M0 300C100 250 200 280 300 300C400 320 500 280 600 300C700 320 800 300 800 300V600H0V300Z" fill="#90EE90"/>
+  
+  <!-- Barn -->
+  <path d="M500 250L600 350H400L500 250Z" fill="#8B4513"/>
+  <rect x="420" y="350" width="160" height="120" fill="#CD853F"/>
+  
+  <!-- Silo -->
+  <rect x="600" y="300" width="40" height="170" fill="#A0522D"/>
+  <path d="M600 300C600 280 640 280 640 300" stroke="#8B4513" stroke-width="5"/>
+  
+  <!-- Cows -->
+  <g transform="translate(100,400)">
+    <path d="M0 0C0 -20 40 -20 40 0V30H0V0Z" fill="#000000"/>
+    <circle cx="20" cy="-10" r="15" fill="#000000"/>
+    <rect x="5" y="30" width="30" height="20" fill="#000000"/>
+  </g>
+  
+  <g transform="translate(200,420)">
+    <path d="M0 0C0 -20 40 -20 40 0V30H0V0Z" fill="#FFFFFF"/>
+    <circle cx="20" cy="-10" r="15" fill="#FFFFFF"/>
+    <rect x="5" y="30" width="30" height="20" fill="#FFFFFF"/>
+  </g>
+  
+  <!-- Fence -->
+  <path d="M50 450H350" stroke="#8B4513" stroke-width="10"/>
+  <path d="M50 480H350" stroke="#8B4513" stroke-width="10"/>
+  <path d="M75 430V500" stroke="#8B4513" stroke-width="10"/>
+  <path d="M125 430V500" stroke="#8B4513" stroke-width="10"/>
+  <path d="M175 430V500" stroke="#8B4513" stroke-width="10"/>
+  <path d="M225 430V500" stroke="#8B4513" stroke-width="10"/>
+  <path d="M275 430V500" stroke="#8B4513" stroke-width="10"/>
+  <path d="M325 430V500" stroke="#8B4513" stroke-width="10"/>
+</svg>
