@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 
 const fadeIn = (delay = 0) => ({
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { delay, duration: 0.6 } },
+  visible: { opacity: 1, y: 0, transition: { delay, duration: 0.3 } },
 });
 
 export default function Home() {
