@@ -1,5 +1,5 @@
 "use client";
-
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -13,6 +13,11 @@ import {
   Globe,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+
+const fadeIn = (delay = 0) => ({
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { delay, duration: 0.6 } },
+});
 
 export default function Home() {
   const heroImages: string[] = [
@@ -53,75 +58,118 @@ export default function Home() {
 
   <div className="container px-4 md:px-6 relative z-10 flex flex-col lg:flex-row justify-between items-center w-full gap-12">
     {/* Text Content (Left) */}
-    <div className="space-y-6 max-w-xl text-left">
-      <div className="inline-block rounded-lg bg-white/10 backdrop-blur-sm px-3 py-1 text-sm text-white mb-4">
-        Youth-Focused Initiative
-      </div>
-      <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-white text-shadow">
-        NexGen Dairy Farmers Network
-      </h1>
-      <p className="text-xl text-white/90 md:text-2xl/relaxed lg:text-xl/relaxed xl:text-2xl/relaxed">
-        Empowering Youth in Dairy Farming through Professionalization,
-        Technology, and Market Access
-      </p>
-      <div className="flex flex-col gap-4 min-[400px]:flex-row">
-        <Link href="/about">
-          <Button className="bg-white text-farm-dark hover:bg-gray-100 font-lora">
-            Learn More
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </Link>
-        <Link href="/join">
-          <Button
-            variant="outline"
-            className="border-white text-white bg-white/10 font-lora"
-          >
-            Join the Network
-          </Button>
-        </Link>
-      </div>
-    </div>
+    
+<div className="space-y-6 max-w-xl text-left">
+  <motion.div
+    variants={fadeIn(0.1)}
+    initial="hidden"
+    animate="visible"
+    className="inline-block rounded-lg bg-white/10 backdrop-blur-sm px-3 py-1 text-sm text-white mb-4"
+  >
+    Youth-Focused Initiative
+  </motion.div>
+
+  <motion.h1
+    variants={fadeIn(0.3)}
+    initial="hidden"
+    animate="visible"
+    className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-white text-shadow"
+  >
+    NexGen Dairy Farmers Network
+  </motion.h1>
+
+  <motion.p
+    variants={fadeIn(0.5)}
+    initial="hidden"
+    animate="visible"
+    className="text-xl text-white/90 md:text-2xl/relaxed lg:text-xl/relaxed xl:text-2xl/relaxed"
+  >
+    Empowering Youth in Dairy Farming through Professionalization,
+    Technology, and Market Access
+  </motion.p>
+
+  <motion.div
+    variants={fadeIn(0.7)}
+    initial="hidden"
+    animate="visible"
+    className="flex flex-col gap-4 min-[400px]:flex-row"
+  >
+    <Link href="/about">
+      <button className="bg-white text-farm-dark hover:bg-gray-100 font-lora px-4 py-2 rounded">
+        Learn More <ArrowRight className="ml-2 h-4 w-4 inline" />
+      </button>
+    </Link>
+    <Link href="/join">
+      <button className="border border-white text-white bg-white/10 font-lora px-4 py-2 rounded">
+        Join the Network
+      </button>
+    </Link>
+  </motion.div>
+</div>
+
 
    {/* Images (Right) */}
 <div className="flex flex-col gap-4 mt-8">
-  {/* Upper row of images */}
+  {/* Upper row */}
   <div className="flex flex-row gap-4">
-    <div className="relative w-[180px] h-[250px]">
+    <motion.div
+      variants={fadeIn(1)}
+      initial="hidden"
+      animate="visible"
+      className="relative w-[180px] h-[250px]"
+    >
       <Image
         src="https://i.pinimg.com/1200x/4c/8d/1c/4c8d1cd7fcd518a2ce41418bfaa907e3.jpg"
         alt="Image1"
         fill
         className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
       />
-    </div>
-    <div className="relative w-[200px] h-[150px] mt-24">
+    </motion.div>
+
+    <motion.div
+      variants={fadeIn(1.2)}
+      initial="hidden"
+      animate="visible"
+      className="relative w-[200px] h-[150px] mt-24"
+    >
       <Image
         src="https://i.pinimg.com/1200x/8b/30/d1/8b30d19b4095c0e4a0eca970eff7aeec.jpg"
         alt="Image2"
         fill
         className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
       />
-    </div>
+    </motion.div>
   </div>
 
-  {/* Lower row of images */}
+  {/* Lower row */}
   <div className="flex flex-row gap-4 -ml-[70px]">
-    <div className="relative w-[150px] h-[100px]">
+    <motion.div
+      variants={fadeIn(1.4)}
+      initial="hidden"
+      animate="visible"
+      className="relative w-[150px] h-[100px]"
+    >
       <Image
         src="https://i.pinimg.com/1200x/0e/e7/c4/0ee7c41463fc0789a51e1f624be74af0.jpg"
         alt="Image3"
         fill
         className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
       />
-    </div>
-    <div className="relative w-[300px] h-[200px]">
+    </motion.div>
+
+    <motion.div
+      variants={fadeIn(1.6)}
+      initial="hidden"
+      animate="visible"
+      className="relative w-[300px] h-[200px]"
+    >
       <Image
         src="https://i.pinimg.com/1200x/14/58/b8/1458b8c0998873b2b971b59399e2bf47.jpg"
         alt="Image4"
         fill
         className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
       />
-    </div>
+    </motion.div>
   </div>
 </div>
 
@@ -157,7 +205,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-farm-dark font-lora">
                 Transforming Livestock Farming
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
+              <p className="text-lg text-gray-700 leading-relaxed ">
                 Livestock farming is a vital component of the agricultural
                 sector, contributing significantly to food security, economic
                 growth, and rural livelihoods. However, the sector faces
