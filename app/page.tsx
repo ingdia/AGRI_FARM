@@ -34,118 +34,120 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center">
-        <div className="absolute inset-0 z-0">
-          {heroImages.map((src: string, index: number) => (
-            <Image
-              key={index}
-              src={src}
-              alt={`Hero background ${index + 1}`}
-              fill
-              priority={index === 0}
-              className={`object-cover transition-opacity duration-1000 ease-in absolute inset-0 ${
-                index === currentImageIndex
-                  ? "opacity-100 z-0"
-                  : "opacity-0 z-0"
-              }`}
-            />
-          ))}
-          <div className="absolute inset-0 bg-farm-dark/70 z-10"></div>
-        </div>
+     <section className="relative min-h-[90vh] flex items-center">
+  <div className="absolute inset-0 z-0">
+    {heroImages.map((src: string, index: number) => (
+      <Image
+        key={index}
+        src={src}
+        alt={`Hero background ${index + 1}`}
+        fill
+        priority={index === 0}
+        className={`object-cover transition-opacity duration-1000 ease-in absolute inset-0 ${
+          index === currentImageIndex ? "opacity-100 z-0" : "opacity-0 z-0"
+        }`}
+      />
+    ))}
+    <div className="absolute inset-0 bg-farm-dark/70 z-10"></div>
+  </div>
 
-        <div className="container px-4 md:px-6 relative z-10 flex">
-          <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
-            <div className="space-y-6 fade-in">
-              <div className="inline-block rounded-lg bg-white/10 backdrop-blur-sm px-3 py-1 text-sm text-white mb-4 ">
-                Youth-Focused Initiative
-              </div>
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-white text-shadow">
-                NexGen Dairy Farmers Network
-              </h1>
-              <p className="text-xl text-white/90 md:text-2xl/relaxed lg:text-xl/relaxed xl:text-2xl/relaxed">
-                Empowering Youth in Dairy Farming through Professionalization,
-                Technology, and Market Access
-              </p>
-              <div className="flex flex-col gap-4 min-[400px]:flex-row">
-                <Link href="/about">
-                  <Button className="bg-white text-farm-dark hover:bg-gray-100 font-lora">
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link href="/join">
-                  <Button
-                    variant="outline"
-                    className="border-white text-white bg-white/10 font-lora"
-                  >
-                    Join the Network
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4 mt-8 lg:mt-0 max-w-md mx-auto">
-            <div className="grid grid-cols-2 gap-x-8 mt-8 lg:mt-0 max-w-md mx-auto">
-              <div className="flex flex-col gap-3 spcace-y-20">
-                <div className="relative w-[100px] h-[100px]">
-                  <Image
-                    src="https://i.pinimg.com/1200x/4c/8d/1c/4c8d1cd7fcd518a2ce41418bfaa907e3.jpg"
-                    alt="Image1"
-                    fill
-                    className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="relative w-[200px] h-[300px]">
-                  <Image
-                    src="https://i.pinimg.com/1200x/8b/30/d1/8b30d19b4095c0e4a0eca970eff7aeec.jpg"
-                    alt="Image2"
-                    fill
-                    className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                
-              </div>
+  <div className="container px-4 md:px-6 relative z-10 flex flex-col lg:flex-row justify-between items-center w-full gap-12">
+    {/* Text Content (Left) */}
+    <div className="space-y-6 max-w-xl text-left">
+      <div className="inline-block rounded-lg bg-white/10 backdrop-blur-sm px-3 py-1 text-sm text-white mb-4">
+        Youth-Focused Initiative
+      </div>
+      <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl text-white text-shadow">
+        NexGen Dairy Farmers Network
+      </h1>
+      <p className="text-xl text-white/90 md:text-2xl/relaxed lg:text-xl/relaxed xl:text-2xl/relaxed">
+        Empowering Youth in Dairy Farming through Professionalization,
+        Technology, and Market Access
+      </p>
+      <div className="flex flex-col gap-4 min-[400px]:flex-row">
+        <Link href="/about">
+          <Button className="bg-white text-farm-dark hover:bg-gray-100 font-lora">
+            Learn More
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </Link>
+        <Link href="/join">
+          <Button
+            variant="outline"
+            className="border-white text-white bg-white/10 font-lora"
+          >
+            Join the Network
+          </Button>
+        </Link>
+      </div>
+    </div>
 
-              <div className="flex flex-col gap-4">
-                <div className="relative w-[300px] h-[200px]">
-                  <Image
-                    src="https://i.pinimg.com/1200x/0e/e7/c4/0ee7c41463fc0789a51e1f624be74af0.jpg"
-                    alt="Image3"
-                    fill
-                    className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="relative w-[150px] h-[250px]">
-                  <Image
-                    src="https://i.pinimg.com/1200x/14/58/b8/1458b8c0998873b2b971b59399e2bf47.jpg"
-                    alt="Image4"
-                    fill
-                    className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <a title="title" href="#introduction" className="text-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="lucide lucide-chevron-down"
-            >
-              <path d="m6 9 6 6 6-6" />
-            </svg>
-          </a>
-        </div>
-      </section>
+   {/* Images (Right) */}
+<div className="flex flex-col gap-4 mt-8">
+  {/* Upper row of images */}
+  <div className="flex flex-row gap-4">
+    <div className="relative w-[180px] h-[250px]">
+      <Image
+        src="https://i.pinimg.com/1200x/4c/8d/1c/4c8d1cd7fcd518a2ce41418bfaa907e3.jpg"
+        alt="Image1"
+        fill
+        className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+    <div className="relative w-[200px] h-[150px] mt-24">
+      <Image
+        src="https://i.pinimg.com/1200x/8b/30/d1/8b30d19b4095c0e4a0eca970eff7aeec.jpg"
+        alt="Image2"
+        fill
+        className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+  </div>
+
+  {/* Lower row of images */}
+  <div className="flex flex-row gap-4 -ml-[70px]">
+    <div className="relative w-[150px] h-[100px]">
+      <Image
+        src="https://i.pinimg.com/1200x/0e/e7/c4/0ee7c41463fc0789a51e1f624be74af0.jpg"
+        alt="Image3"
+        fill
+        className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+    <div className="relative w-[300px] h-[200px]">
+      <Image
+        src="https://i.pinimg.com/1200x/14/58/b8/1458b8c0998873b2b971b59399e2bf47.jpg"
+        alt="Image4"
+        fill
+        className="object-cover rounded-lg shadow-md hover:scale-105 transition-transform duration-300"
+      />
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  {/* Scroll Down Indicator */}
+  <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+    <a title="Scroll down" href="#introduction" className="text-white">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="lucide lucide-chevron-down"
+      >
+        <path d="m6 9 6 6 6-6" />
+      </svg>
+    </a>
+  </div>
+</section>
+
 
       {/* Introduction Section */}
       <section id="introduction" className="py-20 md:py-28 bg-white">
@@ -300,7 +302,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Featured Image Section */}
+      {/* Featured Image Section
       <section className="py-20 bg-gray-100">
         <div className="container px-4 md:px-6">
           
@@ -330,7 +332,7 @@ export default function Home() {
             </div>
           
         </div>
-      </section>
+      </section> */}
 
       {/* Key Activities Preview */}
       <section className="py-20 md:py-28 bg-white">
