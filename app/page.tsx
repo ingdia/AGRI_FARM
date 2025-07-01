@@ -12,11 +12,13 @@ import {
   Leaf,
   Globe,
 } from "lucide-react";
+
 import { useEffect, useState } from "react";
+import KeyActivities from "@/components/KeyActivities";
 
 const fadeIn = (delay = 0) => ({
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { delay, duration: 0.3 } },
+  visible: { opacity: 1, y: 0, transition: { delay, duration: 0.1 } },
 });
 
 export default function Home() {
@@ -36,10 +38,55 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, []);
+
+  const [currentObjectiveIndex, setCurrentObjectiveIndex] = useState<number>(0);
+
+const objectives = [
+  {
+    image: "https://i.pinimg.com/1200x/0e/e7/c4/0ee7c41463fc0789a51e1f624be74af0.jpg",
+    title: "Professionalizing Dairy Farming",
+    text: "Providing structured training, certification, and business support for young farmers."
+  },
+  {
+    image: "https://i.pinimg.com/1200x/14/58/b8/1458b8c0998873b2b971b59399e2bf47.jpg",
+    title: "Increasing Productivity",
+    text: "Enhancing efficiency through modern dairy management, smart feeding systems, and precision breeding."
+  },
+  {
+    image: "https://i.pinimg.com/1200x/8b/30/d1/8b30d19b4095c0e4a0eca970eff7aeec.jpg",
+    title: "Promoting Technology",
+    text: "Encouraging adoption of automated milking systems, AI-powered monitoring, and digital farm management tools."
+  },
+  {
+    image: "https://i.pinimg.com/1200x/0e/e7/c4/0ee7c41463fc0789a51e1f624be74af0.jpg",
+    title: "Facilitating Finance Access",
+    text: "Connecting youth-led dairy enterprises with financial institutions, cooperatives, and impact investors."
+  },
+  {
+    image: "https://i.pinimg.com/1200x/14/58/b8/1458b8c0998873b2b971b59399e2bf47.jpg",
+    title: "Strengthening Value Chains",
+    text: "Linking young farmers to processors, retailers, and export markets."
+  },
+  {
+    image: "https://i.pinimg.com/1200x/8b/30/d1/8b30d19b4095c0e4a0eca970eff7aeec.jpg",
+    title: "Supporting Sustainability",
+    text: "Promoting climate-smart dairy practices to enhance resilience and reduce environmental impact."
+  }
+];
+
+// Add this useEffect for automatic cycling through objectives
+useEffect(() => {
+  const objectivesInterval = setInterval(() => {
+    setCurrentObjectiveIndex((prevIndex) => (prevIndex + 1) % objectives.length);
+  }, 2000); // Change every 2 seconds
+
+  return () => clearInterval(objectivesInterval);
+}, [objectives.length]);
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen ">
       {/* Hero Section */}
-     <section className="relative min-h-[90vh] flex items-center">
+     <section className="relative min-h-[90vh] flex items-center ">
   <div className="absolute inset-0 z-0">
     {heroImages.map((src: string, index: number) => (
       <Image
@@ -48,7 +95,7 @@ export default function Home() {
         alt={`Hero background ${index + 1}`}
         fill
         priority={index === 0}
-        className={`object-cover transition-opacity duration-1000 ease-in absolute inset-0 ${
+        className={`object-cover transition-opacity duration-1000 ease-in  inset-0 ${
           index === currentImageIndex ? "opacity-100 z-0" : "opacity-0 z-0"
         }`}
       />
@@ -56,7 +103,7 @@ export default function Home() {
     <div className="absolute inset-0 bg-farm-dark/70 z-10"></div>
   </div>
 
-  <div className="container px-4 md:px-6 relative z-10 flex flex-col lg:flex-row justify-between items-center w-full gap-12">
+  <div className="container px-4 md:px-6 relative z-10 flex flex-col lg:flex-row mr-9 ml-9 justify-between items-center w-full gap-12">
     {/* Text Content (Left) */}
     
 <div className="space-y-6 max-w-xl text-left">
@@ -198,7 +245,7 @@ export default function Home() {
 
 
       {/* Introduction Section */}
-      <section id="introduction" className="py-20 md:py-28 bg-white">
+      <section id="introduction" className="py-20 md:py-28 bg-white mr-9 ml-9">
         <div className="container px-4 md:px-6">
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <div className="space-y-6 slide-in-left">
@@ -238,261 +285,157 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission & Vision Section */}
-      <section className="py-20 bg-farm-dark text-white">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-12 md:grid-cols-2">
-            <div className="bg-farm-medium p-8 rounded-xl shadow-lg scale-in">
-              <h3 className="text-2xl font-bold mb-4 font-lora">Mission</h3>
-              <p className="text-white/90 text-lg leading-relaxed">
-                To equip young dairy farmers with the skills, technology, and
-                resources needed to build sustainable, productive, and
-                commercially successful dairy enterprises.
-              </p>
-            </div>
-            <div className="bg-farm-medium p-8 rounded-xl shadow-lg scale-in">
-              <h3 className="text-2xl font-bold mb-4 font-lora">Vision</h3>
-              <p className="text-white/90 text-lg leading-relaxed">
-                A future where youth drive innovation and growth in the dairy
-                industry, contributing to food security, economic prosperity,
-                and environmental sustainability.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+{/* Mission & Vision Section */}
+<section
+  className="relative py-20 text-white bg-fixed bg-cover bg-center "
+  style={{
+    backgroundImage: "url('https://foodtank.com/wp-content/uploads/2022/12/U.N.-Decade-of-Family-Farming-UNDFF-small-scale-farmers-FAO_social.png')", // Make sure this image is inside your /public/images/ folder
+  }}
+>
+  {/* Dark overlay */}
+  <div className="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
+
+  {/* Content */}
+  <div className="relative z-10 container px-4 md:px-6">
+    <div className="grid gap-12 md:grid-cols-2">
+      <div className="bg-white/10 p-8 rounded-full shadow-lg backdrop-blur-sm scale-in text-center">
+        <h3 className="text-2xl font-bold mb-4 font-lora">Mission</h3>
+        <p className="text-white/90 text-lg leading-relaxed">
+          To equip young dairy farmers with the skills, technology, and
+          resources needed to build sustainable, productive, and
+          commercially successful dairy enterprises.
+        </p>
+      </div>
+      <div className="bg-white/10 p-8 rounded-full shadow-lg backdrop-blur-sm scale-in text-center">
+        <h3 className="text-2xl font-bold mb-4 font-lora">Vision</h3>
+        <p className="text-white/90 text-lg leading-relaxed">
+          A future where youth drive innovation and growth in the dairy
+          industry, contributing to food security, economic prosperity,
+          and environmental sustainability.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* Objectives Preview */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-[800px] space-y-6 text-center mb-16 slide-up">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-farm-dark font-lora">
-              Our Objectives
-            </h2>
-            <p className="mx-auto max-w-[700px] text-gray-700 text-lg">
-              We aim to revolutionize the dairy sector through six key
-              objectives
+<section className="py-20 md:py-28 bg-white mr-9 ml-9">
+  <div className="container px-4 md:px-6">
+    <div className="mx-auto max-w-[800px] space-y-6 text-center mb-16 slide-up">
+      <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-farm-dark font-lora">
+        Our Objectives
+      </h2>
+      <p className="mx-auto max-w-[700px] text-gray-700 text-lg">
+        We aim to revolutionize the dairy sector through six key objectives
+      </p>
+    </div>
+
+    {/* Auto-cycling grid of objectives */}
+    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {objectives.map((item, index) => (
+        <div
+          key={index}
+          className={`group relative overflow-hidden rounded-xl shadow-md border border-gray-100 transition-all duration-700 ${
+            index === currentObjectiveIndex 
+              ? 'ring-4 ring-farm-dark ring-opacity-50 transform scale-105' 
+              : ''
+          }`}
+        >
+          <div className="w-full h-60 overflow-hidden">
+            <Image
+              src={item.image}
+              alt={item.title}
+              fill
+              className={`object-cover transition-all duration-700 ease-in-out ${
+                index === currentObjectiveIndex 
+                  ? 'scale-110' 
+                  : 'scale-100 group-hover:scale-105'
+              }`}
+            />
+          </div>
+          
+          {/* Auto-revealing overlay */}
+          <div className={`absolute inset-0 transition-all duration-700 ease-in-out flex flex-col items-center justify-center p-4 text-center ${
+            index === currentObjectiveIndex
+              ? 'bg-farm-dark bg-opacity-90' // Fully revealed
+              : 'bg-white bg-opacity-80 group-hover:bg-farm-dark group-hover:bg-opacity-90' // Hidden until hover
+          }`}>
+            <h3 className={`text-xl font-bold font-lora mb-2 transition-all duration-700 ${
+              index === currentObjectiveIndex
+                ? 'text-white opacity-100 transform translate-y-0' // Fully visible
+                : 'text-farm-dark opacity-0 group-hover:opacity-100 group-hover:text-white group-hover:transform group-hover:translate-y-0 transform translate-y-4'
+            }`}>
+              {item.title}
+            </h3>
+            <p className={`text-sm leading-relaxed transition-all duration-700 delay-100 ${
+              index === currentObjectiveIndex
+                ? 'text-white opacity-100 transform translate-y-0' // Fully visible
+                : 'text-gray-700 opacity-0 group-hover:opacity-100 group-hover:text-white group-hover:transform group-hover:translate-y-0 transform translate-y-4'
+            }`}>
+              {item.text}
             </p>
           </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="bg-white rounded-xl border border-gray-200 shadow-lg p-8 hover-grow">
-              <Award className="h-10 w-10 text-farm-dark mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-farm-dark font-lora">
-                Professionalizing Dairy Farming
-              </h3>
-              <p className="text-gray-700">
-                Providing structured training, certification, and business
-                support for young farmers.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl border border-gray-200 shadow-lg p-8 hover-grow">
-              <BarChart3 className="h-10 w-10 text-farm-dark mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-farm-dark font-lora">
-                Increasing Productivity
-              </h3>
-              <p className="text-gray-700">
-                Enhancing efficiency through modern dairy management, smart
-                feeding systems, and precision breeding.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl border border-gray-200 shadow-lg p-8 hover-grow">
-              <Lightbulb className="h-10 w-10 text-farm-dark mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-farm-dark font-lora">
-                Promoting Technology
-              </h3>
-              <p className="text-gray-700">
-                Encouraging adoption of automated milking systems, AI-powered
-                monitoring, and digital farm management tools.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl border border-gray-200 shadow-lg p-8 hover-grow">
-              <BarChart3 className="h-10 w-10 text-farm-dark mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-farm-dark font-lora">
-                Facilitating Finance Access
-              </h3>
-              <p className="text-gray-700">
-                Connecting youth-led dairy enterprises with financial
-                institutions, cooperatives, and impact investors.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl border border-gray-200 shadow-lg p-8 hover-grow">
-              <Globe className="h-10 w-10 text-farm-dark mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-farm-dark font-lora">
-                Strengthening Value Chains
-              </h3>
-              <p className="text-gray-700">
-                Linking young farmers to processors, retailers, and export
-                markets.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl border border-gray-200 shadow-lg p-8 hover-grow">
-              <Leaf className="h-10 w-10 text-farm-dark mb-4" />
-              <h3 className="text-xl font-bold mb-3 text-farm-dark font-lora">
-                Supporting Sustainability
-              </h3>
-              <p className="text-gray-700">
-                Promoting climate-smart dairy practices to enhance resilience
-                and reduce environmental impact.
-              </p>
-            </div>
-          </div>
-          <div className="mt-12 text-center">
-            <Link href="/objectives">
-              <Button
-                variant="outline"
-                className="border-farm-dark text-farm-dark hover:bg-farm-dark hover:text-white font-lora"
-              >
-                Learn more about our objectives
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
+          
+          {/* Active indicator */}
+          {index === currentObjectiveIndex && (
+            <div className="absolute top-4 right-4 w-3 h-3 bg-white rounded-full animate-pulse"></div>
+          )}
         </div>
-      </section>
+      ))}
+    </div>
 
-      {/* Featured Image Section
-      <section className="py-20 bg-gray-100">
-        <div className="container px-4 md:px-6">
-          
-            <div className="relative rounded-xl overflow-hidden shadow-lg h-[300px] hover-grow">
-              <Image
-                src="https://pbs.twimg.com/media/GkpvYAfWQAAGs0H?format=jpg&name=900x900"
-                alt="Rwandan dairy cow"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="relative rounded-xl overflow-hidden shadow-lg h-[300px] hover-grow">
-              <Image
-                src="https://www.wfp.org/sites/default/files/styles/media_embed/public/2021-12/For%20Story%205a.jpg?itok=8QmJuhkp"
-                alt="Rwandan dairy farmer"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="relative rounded-xl overflow-hidden shadow-lg h-[300px] hover-grow">
-              <Image
-                src="https://www.bothar.ie/sites/default/files/styles/widescreen_television/public/media/images/2019-01/Milk%20Rwanda.jpg?itok=27cuDbRF"
-                alt="Rwandan dairy products"
-                fill
-                className="object-cover"
-              />
-            </div>
-          
-        </div>
-      </section> */}
+    {/* Progress indicators */}
+    <div className="flex justify-center mt-8 space-x-2">
+      {objectives.map((_, index) => (
+        <div
+          key={index}
+          className={`h-2 rounded-full transition-all duration-300 ${
+            index === currentObjectiveIndex
+              ? 'w-8 bg-farm-dark'
+              : 'w-2 bg-gray-300'
+          }`}
+        />
+      ))}
+    </div>
+
+    <div className="mt-12 text-center">
+      <Link href="/objectives">
+        <Button
+          variant="outline"
+          className="border-farm-dark text-farm-dark hover:bg-farm-dark hover:text-white font-lora"
+        >
+          Learn more about our objectives
+          <ChevronRight className="ml-2 h-4 w-4" />
+        </Button>
+      </Link>
+    </div>
+  </div>
+</section>
 
       {/* Key Activities Preview */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-[800px] space-y-6 text-center mb-16 slide-up">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-farm-dark font-lora">
-              Key Activities
-            </h2>
-            <p className="mx-auto max-w-[700px] text-gray-700 text-lg">
-              Our comprehensive approach includes five key activity areas
-            </p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            <Link
-              href="/activities/capacity-building"
-              className="group bg-white rounded-xl border border-gray-200 shadow-lg p-8 hover:border-farm-dark hover:shadow-xl transition-all duration-300"
-            >
-              <h3 className="text-xl font-bold mb-3 text-farm-dark group-hover:text-farm-medium font-lora">
-                Capacity Building & Professional Development
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Training programs on dairy management, farm business, and
-                entrepreneurship.
-              </p>
-              <div className="flex items-center text-farm-dark group-hover:translate-x-2 transition-transform duration-300">
-                <span className="text-sm font-medium">Learn more</span>
-                <ChevronRight className="ml-1 h-4 w-4" />
-              </div>
-            </Link>
-            <Link
-              href="/activities/innovation"
-              className="group bg-white rounded-xl border border-gray-200 shadow-lg p-8 hover:border-farm-dark hover:shadow-xl transition-all duration-300"
-            >
-              <h3 className="text-xl font-bold mb-3 text-farm-dark group-hover:text-farm-medium font-lora">
-                Productivity Enhancement through Innovation
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Smart dairy farming, data-driven optimization, and genetic
-                improvement.
-              </p>
-              <div className="flex items-center text-farm-dark group-hover:translate-x-2 transition-transform duration-300">
-                <span className="text-sm font-medium">Learn more</span>
-                <ChevronRight className="ml-1 h-4 w-4" />
-              </div>
-            </Link>
-            <Link
-              href="/activities/market-access"
-              className="group bg-white rounded-xl border border-gray-200 shadow-lg p-8 hover:border-farm-dark hover:shadow-xl transition-all duration-300"
-            >
-              <h3 className="text-xl font-bold mb-3 text-farm-dark group-hover:text-farm-medium font-lora">
-                Market Access & Value Chain Development
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Cooperatives, offtake agreements, and digital sales channels.
-              </p>
-              <div className="flex items-center text-farm-dark group-hover:translate-x-2 transition-transform duration-300">
-                <span className="text-sm font-medium">Learn more</span>
-                <ChevronRight className="ml-1 h-4 w-4" />
-              </div>
-            </Link>
-            <Link
-              href="/activities/financial-support"
-              className="group bg-white rounded-xl border border-gray-200 shadow-lg p-8 hover:border-farm-dark hover:shadow-xl transition-all duration-300"
-            >
-              <h3 className="text-xl font-bold mb-3 text-farm-dark group-hover:text-farm-medium font-lora">
-                Financial Support & Investment
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Loan schemes, impact investment, and cooperative-based credit
-                facilities.
-              </p>
-              <div className="flex items-center text-farm-dark group-hover:translate-x-2 transition-transform duration-300">
-                <span className="text-sm font-medium">Learn more</span>
-                <ChevronRight className="ml-1 h-4 w-4" />
-              </div>
-            </Link>
-            <Link
-              href="/activities/networking"
-              className="group bg-white rounded-xl border border-gray-200 shadow-lg p-8 hover:border-farm-dark hover:shadow-xl transition-all duration-300"
-            >
-              <h3 className="text-xl font-bold mb-3 text-farm-dark group-hover:text-farm-medium font-lora">
-                Networking, Mentorship & Policy Engagement
-              </h3>
-              <p className="text-gray-700 mb-4">
-                Mentorship programs, annual forums, and youth-inclusive policy
-                advocacy.
-              </p>
-              <div className="flex items-center text-farm-dark group-hover:translate-x-2 transition-transform duration-300">
-                <span className="text-sm font-medium">Learn more</span>
-                <ChevronRight className="ml-1 h-4 w-4" />
-              </div>
-            </Link>
-          </div>
-        </div>
-      </section>
+       <KeyActivities />
 
       {/* Testimonial Section */}
-      <section className="py-20 bg-farm-dark text-white">
-        <div className="container px-4 md:px-6">
+      <section   className="relative py-20 text-white bg-fixed bg-cover bg-center"
+  style={{
+    backgroundImage: "url('https://foodtank.com/wp-content/uploads/2022/12/U.N.-Decade-of-Family-Farming-UNDFF-small-scale-farmers-FAO_social.png')", // Make sure this image is inside your /public/images/ folder
+  }}>
+     <div className="absolute inset-0 bg-black bg-opacity-60 z-0"></div>
+        <div className="container px-4 md:px-6 ">
           <div className="mx-auto max-w-[800px] space-y-6 text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white font-lora">
+            <h2 className="text-3xl  tracking-tighter sm:text-4xl text-white/90 font-lora  drop-shadow-lg">
               Success Stories
             </h2>
-            <p className="mx-auto max-w-[700px] text-white/80 text-lg">
+            <p className="mx-auto max-w-[700px] text-white/80 text-lg  drop-shadow-lg">
               Hear from young farmers who have transformed their lives through
               NDFN
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="bg-farm-medium p-8 rounded-xl shadow-lg">
+          <div className="grid gap-8 md:grid-cols-2 mr-9 ml-9">
+            <div className="bg-white/10 p-8 rounded-full shadow-lg backdrop-blur-sm scale-in text-center">
               <div className="flex items-center mb-6">
-                <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
+                <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4 ml-20">
                   <Image
                     src="https://gfair.network/sites/default/files/inline-images/IDA%20internal.png"
                     alt="Young dairy farmer"
@@ -513,9 +456,9 @@ export default function Home() {
                 assistants."
               </p>
             </div>
-            <div className="bg-farm-medium p-8 rounded-xl shadow-lg">
-              <div className="flex items-center mb-6">
-                <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
+            <div className="bg-white/10 p-8 rounded-full shadow-lg backdrop-blur-sm scale-in text-center">
+              <div className="flex items-center mb-6 ">
+                <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4 ml-20">
                   <Image
                     src="https://oneacrefund.org/sites/default/files/styles/single_narrow_banner_desktop_x2/public/2025-04/TZN_4323%20%281%29.webp?itok=PYdAlLOl"
                     alt="Young dairy farmer"
