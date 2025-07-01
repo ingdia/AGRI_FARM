@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
   ChevronRight,
+  ChevronLeft,
   Award,
   Lightbulb,
   BarChart3,
@@ -319,8 +320,8 @@ useEffect(() => {
 </section>
 
 
-      {/* Objectives Preview */}
-<section className="py-20 md:py-28 bg-white mr-9 ml-9">
+{/* Objectives Preview */}
+<section className="py-20 md:py-28 bg-white mx-9">
   <div className="container px-4 md:px-6">
     <div className="mx-auto max-w-[800px] space-y-6 text-center mb-16 slide-up">
       <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-farm-dark font-lora">
@@ -331,82 +332,156 @@ useEffect(() => {
       </p>
     </div>
 
-    {/* Auto-cycling grid of objectives */}
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {objectives.map((item, index) => (
-        <div
-          key={index}
-          className={`group relative overflow-hidden rounded-xl shadow-md border border-gray-100 transition-all duration-700 ${
-            index === currentObjectiveIndex 
-              ? 'ring-4 ring-farm-dark ring-opacity-50 transform scale-105' 
-              : ''
-          }`}
-        >
-          <div className="w-full h-60 overflow-hidden">
-            <Image
-              src={item.image}
-              alt={item.title}
-              fill
-              className={`object-cover transition-all duration-700 ease-in-out ${
-                index === currentObjectiveIndex 
-                  ? 'scale-110' 
-                  : 'scale-100 group-hover:scale-105'
+    {/* Staircase sliding layout */}
+    <div className="max-w-6xl mx-auto relative">
+      <div className="flex items-center justify-between">
+        
+        {/* Left side - Staircase cards */}
+        <div className="w-1/2 relative h-[600px] overflow-hidden">
+          {objectives.map((item, index) => (
+            <div
+              key={index}
+              className={`absolute transition-all duration-[2000ms] ease-out rounded-xl shadow-lg overflow-hidden ${
+                index === currentObjectiveIndex
+                  ? 'w-72 h-48 z-20 left-0'
+                  : index < currentObjectiveIndex
+                  ? `w-64 h-40 z-${15 - index} left-${(index + 1) * 8} top-${(currentObjectiveIndex - index) * 12} opacity-70`
+                  : `w-56 h-36 z-${10 - Math.abs(index - currentObjectiveIndex)} left-${(objectives.length - index) * 12} top-${(index - currentObjectiveIndex) * 16} opacity-50`
               }`}
-            />
-          </div>
-          
-          {/* Auto-revealing overlay */}
-          <div className={`absolute inset-0 transition-all duration-700 ease-in-out flex flex-col items-center justify-center p-4 text-center ${
-            index === currentObjectiveIndex
-              ? 'bg-farm-dark bg-opacity-90' // Fully revealed
-              : 'bg-white bg-opacity-80 group-hover:bg-farm-dark group-hover:bg-opacity-90' // Hidden until hover
-          }`}>
-            <h3 className={`text-xl font-bold font-lora mb-2 transition-all duration-700 ${
-              index === currentObjectiveIndex
-                ? 'text-white opacity-100 transform translate-y-0' // Fully visible
-                : 'text-farm-dark opacity-0 group-hover:opacity-100 group-hover:text-white group-hover:transform group-hover:translate-y-0 transform translate-y-4'
-            }`}>
-              {item.title}
-            </h3>
-            <p className={`text-sm leading-relaxed transition-all duration-700 delay-100 ${
-              index === currentObjectiveIndex
-                ? 'text-white opacity-100 transform translate-y-0' // Fully visible
-                : 'text-gray-700 opacity-0 group-hover:opacity-100 group-hover:text-white group-hover:transform group-hover:translate-y-0 transform translate-y-4'
-            }`}>
-              {item.text}
-            </p>
-          </div>
-          
-          {/* Active indicator */}
-          {index === currentObjectiveIndex && (
-            <div className="absolute top-4 right-4 w-3 h-3 bg-white rounded-full animate-pulse"></div>
-          )}
+              style={{
+                top: index === currentObjectiveIndex 
+                  ? '50%' 
+                  : index < currentObjectiveIndex
+                  ? `${20 + (currentObjectiveIndex - index) * 60}px`
+                  : `${300 + (index - currentObjectiveIndex) * 80}px`,
+                left: index === currentObjectiveIndex
+                  ? '0px'
+                  : index < currentObjectiveIndex
+                  ? `${(index + 1) * 40}px`
+                  : `${(objectives.length - index) * 60}px`,
+                transform: index === currentObjectiveIndex ? 'translateY(-50%)' : 'none',
+                zIndex: index === currentObjectiveIndex ? 20 : 15 - Math.abs(index - currentObjectiveIndex)
+              }}
+            >
+              {/* Small card image */}
+              <div className="w-full h-full relative">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className={`object-cover transition-all duration-[2000ms] ease-out ${
+                    index === currentObjectiveIndex
+                      ? 'scale-100 brightness-100'
+                      : 'scale-105 brightness-75'
+                  }`}
+                />
+                
+                {/* Card overlay */}
+                <div className={`absolute inset-0 transition-all duration-[2000ms] ${
+                  index === currentObjectiveIndex
+                    ? 'bg-gradient-to-t from-farm-dark/80 via-farm-dark/40 to-transparent'
+                    : 'bg-gradient-to-t from-black/60 via-black/30 to-transparent'
+                }`} />
+
+                {/* Card number */}
+                <div className={`absolute top-3 left-3 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-[2000ms] ${
+                  index === currentObjectiveIndex
+                    ? 'bg-white text-farm-dark shadow-md scale-110'
+                    : 'bg-white/80 text-gray-700 scale-90'
+                }`}>
+                  {index + 1}
+                </div>
+
+                {/* Card title for non-active */}
+                {index !== currentObjectiveIndex && (
+                  <div className="absolute bottom-2 left-2 right-2">
+                    <h4 className="text-white text-xs font-semibold font-lora truncate">
+                      {item.title}
+                    </h4>
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+
+        {/* Right side - Content display */}
+        <div className="w-1/2 pl-12">
+          <div className="transition-all duration-[2000ms] ease-out">
+            {/* Active objective number */}
+            <div className="flex items-center mb-6">
+              <div className="w-16 h-16 rounded-full bg-farm-dark text-white flex items-center justify-center font-bold text-2xl font-lora shadow-lg">
+                {currentObjectiveIndex + 1}
+              </div>
+              <div className="ml-4 h-px flex-1 bg-gradient-to-r from-farm-dark to-transparent"></div>
+            </div>
+
+            {/* Content */}
+            <div className="space-y-6">
+              <h3 className="text-4xl font-bold font-lora text-farm-dark leading-tight">
+                {objectives[currentObjectiveIndex]?.title}
+              </h3>
+              
+              <p className="text-lg text-gray-700 leading-relaxed">
+                {objectives[currentObjectiveIndex]?.text}
+              </p>
+
+              {/* Progress indicator */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-sm text-gray-500">
+                  <span>Progress</span>
+                  <span>{currentObjectiveIndex + 1} of {objectives.length}</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div 
+                    className="bg-farm-dark h-2 rounded-full transition-all duration-[2000ms] ease-out"
+                    style={{ width: `${((currentObjectiveIndex + 1) / objectives.length) * 100}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    {/* Progress indicators */}
-    <div className="flex justify-center mt-8 space-x-2">
+    {/* Simple dot indicators */}
+    <div className="flex justify-center mt-16 space-x-4">
       {objectives.map((_, index) => (
-        <div
+        <button
           key={index}
-          className={`h-2 rounded-full transition-all duration-300 ${
+          onClick={() => setCurrentObjectiveIndex(index)}
+          className={`rounded-full transition-all duration-700 focus:outline-none focus:ring-2 focus:ring-farm-dark focus:ring-offset-2 ${
             index === currentObjectiveIndex
-              ? 'w-8 bg-farm-dark'
-              : 'w-2 bg-gray-300'
+              ? 'w-4 h-4 bg-farm-dark shadow-md scale-125'
+              : 'w-3 h-3 bg-gray-300 hover:bg-gray-400 hover:scale-110'
           }`}
         />
       ))}
     </div>
 
-    <div className="mt-12 text-center">
+    {/* Timeline visualization */}
+    <div className="flex justify-center mt-8 max-w-md mx-auto">
+      {objectives.map((_, index) => (
+        <div
+          key={index}
+          className={`flex-1 h-1 mx-1 rounded transition-all duration-[2000ms] ${
+            index <= currentObjectiveIndex
+              ? 'bg-farm-dark'
+              : 'bg-gray-300'
+          }`}
+        />
+      ))}
+    </div>
+
+    {/* Call to action */}
+    <div className="mt-16 text-center">
       <Link href="/objectives">
         <Button
           variant="outline"
-          className="border-farm-dark text-farm-dark hover:bg-farm-dark hover:text-white font-lora"
+          className="border-2 border-farm-dark text-farm-dark hover:bg-farm-dark hover:text-white font-lora px-8 py-3 text-lg rounded-full transition-all duration-500 hover:shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-farm-dark focus:ring-offset-2"
         >
-          Learn more about our objectives
-          <ChevronRight className="ml-2 h-4 w-4" />
+          Explore All Objectives
         </Button>
       </Link>
     </div>

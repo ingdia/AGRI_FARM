@@ -80,8 +80,8 @@ const KeyActivities = () => {
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {activities.map((activity, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-4">
-                  <div className="bg-white rounded-xl border border-gray-200 shadow-lg p-8 mx-auto max-w-2xl hover:border-green-700 hover:shadow-xl transition-all duration-300 cursor-pointer group">
+                <div key={index} className="w-full flex-shrink-0 px-4 ">
+                  <div className="bg-white rounded-xl border border-green-700 shadow-lg p-8 mx-auto max-w-2xl hover:border-green-700 hover:shadow-xl transition-all duration-300 cursor-pointer group">
                     <h3 className="text-2xl font-bold mb-4 text-slate-800 group-hover:text-green-700 font-serif transition-colors duration-300">
                       {activity.title}
                     </h3>
