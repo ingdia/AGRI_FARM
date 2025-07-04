@@ -56,6 +56,11 @@ function DesktopNav() {
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
+            <Link href="/" legacyBehavior passHref>
+              <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "font-lora")}>Home</NavigationMenuLink>
+            </Link>
+            </NavigationMenuItem>
+          <NavigationMenuItem>
             <NavigationMenuTrigger className="font-lora">About</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-2">
