@@ -102,7 +102,7 @@ function DesktopNav() {
                 <ListItem href="/activities/market-access" title="Market Access">
                   Value chain development and market linkages
                 </ListItem>
-                <ListItem href="/activities/financial-support" title="Financial Support">
+                <ListItem href="/partners" title="Financial Support">
                   Investment opportunities and funding schemes
                 </ListItem>
                 <ListItem href="/activities/networking" title="Networking & Policy">
