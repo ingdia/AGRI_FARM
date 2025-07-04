@@ -77,7 +77,7 @@ function DesktopNav() {
                     </a>
                   </NavigationMenuLink>
                 </li>
-                <ListItem href="/mission" title="Mission & Vision">
+                <ListItem href="/objectives/mission" title="Mission & Vision">
                   Our guiding principles and future aspirations
                 </ListItem>
                 <ListItem href="/objectives" title="Objectives">
