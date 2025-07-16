@@ -10,7 +10,7 @@ export default function TargetAudiencePage() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 z-0">
-          <Image src="https://images.ctfassets.net/wqdtr8q8192q/3le8AdyxxS6ZWLrSQZxRxi/eb1f918444034333ed64ba2175560c9c/Finding_Target_Audience.jpg" alt="Young Rwandan dairy farmers" fill className="object-cover" />
+          <Image src="/images/youth-hands.png" alt="Young Rwandan dairy farmers" fill className="object-cover" />
           <div className="absolute inset-0 bg-farm-dark/70"></div>
         </div>
         <div className="container px-4 md:px-6 relative z-10">
@@ -82,39 +82,29 @@ export default function TargetAudiencePage() {
       </section>
 
       {/* Youth Cooperatives Section */}
-      <section className="py-20 bg-gray-100">
-        <div className="container px-4 md:px-6">
-          <div className="grid gap-12 lg:grid-cols-2 items-center">
-            <div className="space-y-6 slide-in-left">
-              <h2 className="text-3xl font-bold tracking-tighter text-farm-dark font-lora">
-                Youth Cooperatives and Startups
-              </h2>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                The NDFN also supports youth cooperatives and dairy business startups that require technical and
-                financial support to establish and grow their operations.
-              </p>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                By working together in cooperatives, young farmers can pool resources, share knowledge, and access
-                markets more effectively. This collaborative approach helps overcome the challenges of limited land,
-                capital, and experience that individual youth often face.
-              </p>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                NDFN provides specialized support to these groups, including organizational development, governance
-                training, and cooperative business management.
-              </p>
-            </div>
-            <div className="relative rounded-xl overflow-hidden shadow-2xl slide-in-right">
-              <Image
-                src="https://www.kit.nl/wp-content/uploads/2018/08/Youth-in-Agricultural-Cooperatives-Editorial-use-High-scaled.jpg?image-crop-positioner-ts=1712774307"
-                alt="Youth cooperative members working together"
-                width={600}
-                height={400}
-                className="w-full h-[400px] object-cover hover-grow"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+     <section className="py-20 bg-gray-100 px-4 md:px-6">
+  <div className="max-w-4xl mx-auto text-center">
+    <div className="space-y-6 slide-in-left">
+      <h2 className="text-3xl font-bold tracking-tighter text-farm-dark font-lora">
+        Youth Cooperatives and Startups
+      </h2>
+      <p className="text-gray-700 text-lg leading-relaxed">
+        The NDFN also supports youth cooperatives and dairy business startups that require technical and
+        financial support to establish and grow their operations.
+      </p>
+      <p className="text-gray-700 text-lg leading-relaxed">
+        By working together in cooperatives, young farmers can pool resources, share knowledge, and access
+        markets more effectively. This collaborative approach helps overcome the challenges of limited land,
+        capital, and experience that individual youth often face.
+      </p>
+      <p className="text-gray-700 text-lg leading-relaxed">
+        NDFN provides specialized support to these groups, including organizational development, governance
+        training, and cooperative business management.
+      </p>
+    </div>
+  </div>
+</section>
+
 
       {/* Why Youth Section */}
       <section className="py-20 bg-farm-dark text-white">
@@ -154,51 +144,72 @@ export default function TargetAudiencePage() {
       </section>
 
       {/* Success Stories Section */}
-      <section className="py-20 bg-white">
-        <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-[800px] space-y-6 text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-farm-dark font-lora">
-              Success Stories
-            </h2>
-            <p className="mx-auto max-w-[700px] text-gray-700 text-lg">
-              Meet some of the young farmers who have benefited from NDFN's programs
-            </p>
-          </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="bg-white rounded-xl border border-gray-200 shadow-lg p-6 hover-grow">
-              <div className="flex items-center mb-6">
-                <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
-                  <Image src="https://www.iied.org/sites/default/files/styles/scale_md/public/images/2013/03/06/Rwanda_farmer_0.jpg" alt="Young dairy farmer" fill className="object-cover" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold text-farm-dark font-lora">Emmanuel Niyonkuru</h4>
-                  <p className="text-gray-600">Dairy Entrepreneur, Nyagatare</p>
-                </div>
-              </div>
-              <p className="text-gray-700 italic">
-                "NDFN's training program gave me the skills and confidence to expand my dairy farm from 2 to 8 cows. The
-                business management training was particularly valuable, helping me to track costs and maximize profits."
-              </p>
-            </div>
-            <div className="bg-white rounded-xl border border-gray-200 shadow-lg p-6 hover-grow">
-              <div className="flex items-center mb-6">
-                <div className="relative w-16 h-16 rounded-full overflow-hidden mr-4">
-                  <Image src="https://alliancebioversityciat.org/sites/default/files/styles/1920_scale/public/images/rwanda-alliance-bioversity-international-ciat.jpg?itok=-5QpFyLt" alt="Young dairy farmer" fill className="object-cover" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold text-farm-dark font-lora">Claudine Mukamana</h4>
-                  <p className="text-gray-600">Dairy Technologist, Musanze</p>
-                </div>
-              </div>
-              <p className="text-gray-700 italic">
-                "As a veterinary graduate, I wanted to apply my knowledge in the dairy sector. NDFN connected me with a
-                mentor and helped me secure financing to start a mobile veterinary service for dairy farmers in my
-                region."
-              </p>
-            </div>
+      <section
+  className="relative py-20 text-white bg-fixed bg-cover bg-center"
+  style={{
+    backgroundImage: "url('/images/cow-beside-milk.png')", // Replace with a suitable image path
+  }}
+>
+  {/* Dark overlay */}
+  <div className="absolute bg-black bg-opacity-80 inset-0 z-0"></div>
+
+  {/* Content */}
+  <div className="relative z-10 container px-4 md:px-6">
+    <div className="mx-auto max-w-[800px] text-center space-y-6 mb-12">
+      <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white font-lora">
+        Success Stories
+      </h2>
+      <p className="text-white/90 text-lg">
+        Meet some of the young farmers who have benefited from NDFN's programs
+      </p>
+    </div>
+
+    <div className="grid gap-8 md:grid-cols-2">
+      {/* Card 1 */}
+      <div className="bg-white/10 p-6 rounded-xl shadow-lg backdrop-blur-sm text-center transform transition-all duration-500 hover:scale-105 hover:bg-white/15 hover:shadow-3xl">
+        <div className="flex items-center justify-center mb-6">
+          <div className="relative w-16 h-16 rounded-full overflow-hidden">
+            <Image
+              src="https://www.iied.org/sites/default/files/styles/scale_md/public/images/2013/03/06/Rwanda_farmer_0.jpg"
+              alt="Young dairy farmer"
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
-      </section>
+        <h4 className="text-lg font-bold text-white font-lora">
+          Emmanuel Niyonkuru
+        </h4>
+        <p className="text-white/80 mb-4">Dairy Entrepreneur, Nyagatare</p>
+        <p className="text-white/90 italic">
+          "NDFN's training program gave me the skills and confidence to expand my dairy farm from 2 to 8 cows. The business management training was particularly valuable, helping me to track costs and maximize profits."
+        </p>
+      </div>
+
+      {/* Card 2 */}
+      <div className="bg-white/10 p-6 rounded-xl shadow-lg backdrop-blur-sm text-center transform transition-all duration-500 hover:scale-105 hover:bg-white/15 hover:shadow-3xl">
+        <div className="flex items-center justify-center mb-6">
+          <div className="relative w-16 h-16 rounded-full overflow-hidden">
+            <Image
+              src="https://alliancebioversityciat.org/sites/default/files/styles/1920_scale/public/images/rwanda-alliance-bioversity-international-ciat.jpg?itok=-5QpFyLt"
+              alt="Young dairy farmer"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+        <h4 className="text-lg font-bold text-white font-lora">
+          Claudine Mukamana
+        </h4>
+        <p className="text-white/80 mb-4">Dairy Technologist, Musanze</p>
+        <p className="text-white/90 italic">
+          "As a veterinary graduate, I wanted to apply my knowledge in the dairy sector. NDFN connected me with a mentor and helped me secure financing to start a mobile veterinary service for dairy farmers in my region."
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* CTA Section */}
       <section className="py-20 bg-farm-light text-white">

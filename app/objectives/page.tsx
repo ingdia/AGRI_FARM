@@ -9,7 +9,7 @@ export default function ObjectivesPage() {
       {/* Hero Section */}
       <section className="relative py-20 md:py-28">
         <div className="absolute inset-0 z-0">
-          <Image src="https://www.gafspfund.org/sites/default/files/inline-images/Rwanda.png" alt="Rwandan dairy farm" fill className="object-cover" />
+          <Image src="/images/cows-field-1.png" alt="Rwandan dairy farm" fill className="object-cover" />
           <div className="absolute inset-0 bg-farm-dark/70"></div>
         </div>
         <div className="container px-4 md:px-6 relative z-10">
@@ -201,7 +201,7 @@ export default function ObjectivesPage() {
           <div className="grid gap-6 md:grid-cols-3">
             <div className="relative rounded-xl overflow-hidden shadow-lg h-[300px] hover-grow">
               <Image
-                src="https://ifdc.org/wp-content/uploads/2016/05/respect-me-copie-1536x863.jpg"
+                src="/people.png"
                 alt="Young farmers receiving training"
                 fill
                 className="object-cover"
@@ -212,7 +212,7 @@ export default function ObjectivesPage() {
             </div>
             <div className="relative rounded-xl overflow-hidden shadow-lg h-[300px] hover-grow">
               <Image
-                src="https://media.istockphoto.com/id/1419254837/photo/cows-in-a-farm-in-rwanda-region-in-africa.jpg?s=612x612&w=0&k=20&c=eEjcLZ8qIRrVjcriiiMsoO5K9xCUYDwwl9heW_r40yA="
+                src="/images/technology-cows.png"
                 alt="Modern dairy farm with technology"
                 fill
                 className="object-cover"
@@ -223,7 +223,7 @@ export default function ObjectivesPage() {
             </div>
             <div className="relative rounded-xl overflow-hidden shadow-lg h-[300px] hover-grow">
               <Image
-                src="https://dailynews.co.tz/wp-content/uploads/2023/01/001_723_IMG_shutterstock_web.jpg"
+                src="/images/Production-milk.png"
                 alt="Farmers at a market selling dairy products"
                 fill
                 className="object-cover"
